@@ -3,33 +3,43 @@
     padding-bottom: 20px;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
+h2 {
+    margin-bottom: 50px;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
+.form-group {
+    padding-right: 20px;
 }
 
-/* QR code generator */
-#qrCode {
-    margin: 15px;
+.text-danger {
+    display: block;
+    height: 20px;
 }
 
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
+.btn {
+    -moz-box-shadow: 0px 3px 8px rgb(100,100,100);
+    -webkit-box-shadow: 0px 3px 8px rgb(100,100,100);
+    box-shadow: 0px 3px 8px rgb(100,100,100);
+}
+
+    .btn:hover {
+        padding: 7px 13px;
+        background:#cecece;
     }
+
+.alert-success{
+    margin-top:20px;
+}
+
+.no-label {
+    margin-top: 20px;
+}
+
+.highlight {
+    background: chartreuse;
 }

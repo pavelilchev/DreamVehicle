@@ -1,6 +1,11 @@
 ﻿namespace DreamVehicle.Web
 {
+    using AutoMapper;
     using DreamVehicle.Data;
+    using DreamVehicle.Services;
+    using DreamVehicle.Services.Implementation;
+    using DreamVehicle.Web.Infrastructure.Extensions;
+    using DreamVehicle.Web.Infrastructure.Mapping;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.EntityFrameworkCore;
@@ -26,11 +31,17 @@
                 options.LowercaseUrls = true;
             });
 
+            Mapper.Initialize(cfg => cfg.AddProfile<AutoMapperProfile>());
+
+            services.AddTransient<IVehicleService, VehicleService>();
+
             services.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseDatabaseMigrate();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -38,7 +49,7 @@
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/home/error");
             }
 
             app.UseStaticFiles();
@@ -47,7 +58,7 @@
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Vehicle}/{action=Index}/{id?}");
             });
         }
     }

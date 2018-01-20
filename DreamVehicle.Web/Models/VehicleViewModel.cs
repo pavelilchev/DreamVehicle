@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    using static Infrastructure.Constants;
+    using static Infrastructure.Constants.ValidationConstants;
 
     public class VehicleViewModel
     {
@@ -11,11 +11,13 @@
         public string Model { get; set; }
 
         [Required(ErrorMessage = RequiredValidationErrorMessage)]
+        [RegularExpression("^[0-9]+$", ErrorMessage = IntigerValidationErrorMessage)]
         [Range(1800, 2100, ErrorMessage = RangeValidationErrorMessage)]
         [Display(Name = ManufacturedYearName)]
         public int ManufacturedYear { get; set; }
 
         [Required(ErrorMessage = RequiredValidationErrorMessage)]
+        [RegularExpression("^[0-9]+$", ErrorMessage = IntigerValidationErrorMessage)]
         [Range(1, 1000, ErrorMessage = RangeValidationErrorMessage)]
         [Display(Name = HorsePowerName)]
         public int HorsePower { get; set; }

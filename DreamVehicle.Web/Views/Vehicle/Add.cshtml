@@ -1,0 +1,74 @@
+﻿@model VehicleViewModel
+
+@{
+    ViewData["Title"] = "Добави нов автомобил";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="form-horizontal">
+    <form method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-5 col-lg-4">
+                    <div class="form-group">
+                        <label asp-for="Model"></label>
+                        <input asp-for="Model" class="form-control" />
+                        <span asp-validation-for="Model" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4">
+                    <div class="form-group">
+                        <label asp-for="HorsePower"></label>
+                        <input asp-for="HorsePower" class="form-control" />
+                        <span asp-validation-for="HorsePower" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 col-md-5 col-lg-4">
+                    <div class="form-group">
+                        <label asp-for="ManufacturedYear"></label>
+                        <input asp-for="ManufacturedYear" class="form-control" />
+                        <span asp-validation-for="ManufacturedYear" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4">
+                    <div class="form-group">
+                        <label asp-for="Importer"></label>
+                        <input asp-for="Importer" class="form-control" />
+                        <span asp-validation-for="Importer" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-10 col-lg-8">
+                    <div class="form-group">
+                        <label asp-for="Description"></label>
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div asp-validation-summary="All" class="alert alert-danger"></div>
+            }
+
+            <div class="row">
+                <div class="col-sm-12 col-md-10 col-lg-8">
+                    <div class="form-group text-right">
+                        <button type="submit" class="btn">Добави в базата!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
